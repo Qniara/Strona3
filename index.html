@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+    <style>
+        img {
+            height: 500px;
+            text-align: center;
+            border: 7px solid black;
+        }
+        body{
+            text-align: center;
+            background-color: rgb(144, 144, 144);
+        }
+        div{
+            font-size:25px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Galeria Zdjęć</h2>
+    <div id="info" class="a"></div><br>
+    <div id="pic" class="b"></div><br>
+    <input type="button" value="←" onclick="lastpic()">
+    <input type="button" value="→" onclick="nextpic()">
+    <script>
+        function change(id) {
+            x = id;
+            document.getElementById('pic').innerHTML = '<img src="' + pics[id][0] + '" />';
+            document.getElementById('info').innerHTML = '<b>' + pics[id][1] + '</b><br><i>' + pics[id][2] + '</i>';
+        }
+        function nextpic() {
+            x = (x + 1) % pics.length;
+            change(x);
+        }
+        function lastpic() {
+            x = (x - 1 + pics.length) % pics.length;
+            change(x);
+        }
+        function load() {
+            change(0);
+        }
+        var pics = [
+            ['findus1.jpg', 'Mieczysław Findus', 'Findus patrzący'],
+            ['findus2.jpg', 'Mieczysław Findus', 'Findus rozglądający się'],
+            ['findus3.jpg', 'Mieczysław Findus', 'Findus zaniepokojony'],
+            ['findus4.jpg', 'Mieczysław Findus', 'Findus zdenerwowany'],
+            ['findus5.jpg', 'Mieczysław Findus', 'Findus znudzony'],
+            ['findus6.jpg', 'Mieczysław Findus', 'Findus polujący']
+        ];
+        
+        var x = 0;
+        window.onload = load;
+    </script>
+</body>
+</html>
